@@ -11,7 +11,7 @@ async function get(tabla, id) {
   return collection.filter((item) => item.id === id)[0] || null;
 }
 async function upsert(tabla, data) {
-  db[collection].push(data);
+  db[tabla].push(data);
 }
 async function remove(tabla, id) {
   return true;
