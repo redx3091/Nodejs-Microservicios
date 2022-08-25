@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.18.1",
-    "nanoid": "^3.3.4",
-    "swagger-ui-express": "^4.5.0"
+    "swagger-ui-express": "^4.5.0",
+    "uuid": "^8.3.2"
   }
 }
