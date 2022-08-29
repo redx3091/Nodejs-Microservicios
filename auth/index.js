@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken');
 const config = require('../config');
+const error = require('../utils/error');
+
 const secret = config.jwt.secret;
 
 function sing(data) {
@@ -15,7 +17,7 @@ const check = {
     const decoded = decodeHeader(req);
     console.log(decoded);
     if (decoded.id !== owner) {
-      throw new Error('No tienes permiso para hacer esta funcion');
+      throw error('No tienes permiso para hacer esta funcion', 401);
     }
   },
 };
