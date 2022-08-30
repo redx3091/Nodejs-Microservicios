@@ -24,11 +24,11 @@ const check = {
 
 function getToken(auth) {
   if (!auth) {
-    throw new Error('No viene Token');
+    throw error('No viene Token', 401);
   }
 
   if (auth.indexOf('Bearer ') === -1) {
-    throw new Error('Formato invalido');
+    throw error('Formato invalido', 401);
   }
 
   let token = auth.replace('Bearer ', '');
