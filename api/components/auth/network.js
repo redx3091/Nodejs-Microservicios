@@ -7,11 +7,11 @@ const router = express.Router();
 //routes
 router.post('/login', login);
 
-function login(req, res) {
+function login(req, res, next) {
   controller
     .login(req.body.username, req.body.password)
     .then((token) => response.success(req, res, token, 200))
-    .catch((e) => response.error(req, res, 'informacion valida', 400));
+    .catch(next);
 }
 
 module.exports = router;

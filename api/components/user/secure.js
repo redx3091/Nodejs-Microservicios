@@ -5,6 +5,7 @@ module.exports = function checkAuth(action) {
     switch (action) {
       case 'update':
         const owner = req.body.id;
+        console.log(owner);
         auth.check.onw(req, owner);
         next();
         break;

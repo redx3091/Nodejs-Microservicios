@@ -15,7 +15,7 @@ function verify(token) {
 const check = {
   onw: function (req, owner) {
     const decoded = decodeHeader(req);
-    console.log(decoded);
+    console.log(decoded.id);
     if (decoded.id !== owner) {
       throw error('No tienes permiso para hacer esta funcion', 401);
     }
@@ -39,7 +39,6 @@ function getToken(auth) {
 function decodeHeader(req) {
   const authorization = req.headers.authorization || '';
   const token = getToken(authorization);
-  console.log(token);
   const decoded = verify(token);
 
   req.user = decoded;
