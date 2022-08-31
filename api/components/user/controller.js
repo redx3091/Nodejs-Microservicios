@@ -38,10 +38,19 @@ module.exports = function (injectedStore) {
   }
 
   function follow(from, to) {
+    console.log(from);
     return store.insert(TABLA + '_follow', {
       user_from: from,
       user_to: to,
     });
+  }
+
+  async function following(user) {
+    const join = {};
+    join[TABLA] = 'user_to'; // {user: 'user_to}
+    const query = { user_from: user };
+
+    return await store.query(TABLA + '_follow', query, join);
   }
 
   return {
@@ -49,5 +58,6 @@ module.exports = function (injectedStore) {
     get,
     upsert,
     follow,
+    following,
   };
 };
