@@ -13,12 +13,16 @@ function verify(token) {
 }
 
 const check = {
-  onw: function (req, owner) {
+  own: function (req, owner) {
     const decoded = decodeHeader(req);
     console.log(decoded.id);
     if (decoded.id !== owner) {
       throw error('No tienes permiso para hacer esta funcion', 401);
     }
+  },
+
+  logged: function (req, owner) {
+    const decoded = decodeHeader(req);
   },
 };
 

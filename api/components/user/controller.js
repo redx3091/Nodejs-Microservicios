@@ -11,9 +11,11 @@ module.exports = function (injectedStore) {
   function list() {
     return store.list(TABLA);
   }
+
   function get(id) {
     return store.get(TABLA, id);
   }
+
   async function upsert(body) {
     const user = {
       name: body.name,
@@ -34,9 +36,18 @@ module.exports = function (injectedStore) {
     }
     return store.upsert(TABLA, user);
   }
+
+  function follow(from, to) {
+    return store.insert(TABLA + '_follow', {
+      user_from: from,
+      user_to: to,
+    });
+  }
+
   return {
     list,
     get,
     upsert,
+    follow,
   };
 };
